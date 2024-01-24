@@ -19,7 +19,7 @@ describe('Pawn', () => {
             pawn.moveTo(board, Square.at(2, 0));
 
             const moves = pawn.getAvailableMoves(board);
-
+            console.log(`available Moves${moves}`)
 
             moves.should.have.length(1);
             moves.should.deep.include(Square.at(3, 0));
@@ -30,6 +30,8 @@ describe('Pawn', () => {
             board.setPiece(Square.at(1, 7), pawn);
 
             const moves = pawn.getAvailableMoves(board);
+            console.log(`available Moves${moves}`)
+
 
             moves.should.have.length(2);
             moves.should.deep.include.members([Square.at(2, 7), Square.at(3, 7)]);
@@ -40,6 +42,8 @@ describe('Pawn', () => {
             board.setPiece(Square.at(7, 3), pawn);
 
             const moves = pawn.getAvailableMoves(board);
+            console.log(`available Moves${moves}`)
+
 
             moves.should.be.empty;
         });
@@ -51,6 +55,7 @@ describe('Pawn', () => {
             board.setPiece(Square.at(5, 3), opposingPiece);
 
             const moves = pawn.getAvailableMoves(board);
+            console.log(`available Moves${moves}`)
 
             moves.should.deep.include(Square.at(5, 3));
         });
@@ -71,6 +76,7 @@ describe('Pawn', () => {
             board.setPiece(Square.at(5, 3), friendlyPiece);
 
             const moves = pawn.getAvailableMoves(board);
+            console.log(`moves the array present in${moves}`)
 
             moves.should.not.deep.include(Square.at(5, 3));
         });
@@ -92,8 +98,7 @@ describe('Pawn', () => {
 
         let board;
         beforeEach(() => board = new Board(Player.BLACK));    
-        
-        it('can only move one square down if they have already moved', () => {
+        ('can only move one square down if they have already moved', () => {
             const pawn = new Pawn(Player.BLACK);
             board.setPiece(Square.at(6, 0), pawn);
             pawn.moveTo(board, Square.at(5, 0));
